@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 // import PropTypes from "prop-types";
 //import { Test } from "./Layout.styles";
 import { Container } from "react-bootstrap";
-import PageHeader from "../../components/PageHeader";
+import PageHeader from "../PageHeader";
 
 class Layout extends PureComponent {
   constructor(props) {

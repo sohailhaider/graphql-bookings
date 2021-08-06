@@ -2,8 +2,9 @@ import Layout from "./components/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import MenusPage from "./pages/MenusPage/MenusPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import MenusPage from "./pages/MenusPage";
+import LoginPage from "./pages/LoginPage";
+import BookingsPage from "./pages/BookingsPage";
 import { LoginContext } from "./utilities/contexts/login-context";
 import { useState } from "react";
 
@@ -17,7 +18,9 @@ function App() {
             <Route path="/menu">
               <MenusPage />
             </Route>
-            <Route path="/bookings">Bookings</Route>
+            <Route path="/bookings">
+              <BookingsPage />
+            </Route>
             <Route path="/login">
               <LoginPage />
             </Route>

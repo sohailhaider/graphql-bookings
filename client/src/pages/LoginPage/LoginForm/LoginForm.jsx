@@ -6,7 +6,7 @@ import { Button, Col, Row, Alert } from "react-bootstrap";
 import InputField from "../../../components/InputField";
 import { Container } from "react-bootstrap";
 import { fetchLoginUser } from "../../../utilities/services/authentication";
-import { redirectToDashboard } from "../../../utilities/navigation-helper";
+import { redirectToBookings } from "../../../utilities/navigation-helper";
 import { LoginContext } from "../../../utilities/contexts/login-context";
 
 class LoginForm extends PureComponent {
@@ -32,7 +32,7 @@ class LoginForm extends PureComponent {
       } catch (error) {
         console.log("error", error.message);
       }
-      redirectToDashboard();
+      redirectToBookings();
     } else {
       this.setErrorMessage("Invalid Email/Password Provided.");
     }
