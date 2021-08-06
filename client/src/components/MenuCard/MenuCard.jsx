@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 //import { Test } from './MenuCard.styles';
-import image1 from "../../assets/jpg/1.jpg";
+import image1 from "../../assets/thumb-1.webp";
 import { Card, Col } from "react-bootstrap";
 
 const MenuCard = ({ name, picture, description }) => (

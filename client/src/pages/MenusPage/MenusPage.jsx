@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 //import { Test } from './MenusPage.styles';
-import image1 from "../../assets/jpg/1.jpg";
+import image1 from "../../assets/png/thumb-2.png";
 import MenuCard from "../../components/MenuCard/MenuCard";
 import { Row } from "react-bootstrap";
 
