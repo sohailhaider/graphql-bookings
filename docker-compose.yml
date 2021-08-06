@@ -1,0 +1,19 @@
+version: "3"
+
+volumes:
+  mongo_data:
+    driver: local
+services:
+  mongo:
+    container_name: booking-mongo
+    restart: unless-stopped
+    image: mongo
+    ports:
+      - "28017:27017"
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+      - MONGODB_USER="user" 
+      - MONGODB_PASS="pass"
+    volumes:
+      - ./mongo_data:/data/booking_db
