@@ -5,12 +5,16 @@ import { Row, Col } from "react-bootstrap";
 import BookingInfoCard from "../../../components/BookingInfoCard";
 import { DatePicker } from "antd";
 import Page from "../../../components/Page";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { FETCH_BOOKINGS } from "../../../graphql/queries/bookings";
+import {
+  CONFIRM_BOOKING,
+  DELETE_BOOKING,
+} from "../../../graphql/mutations/bookings";
 
 const BookingsListingPage = (props) => {
   const [filters, setFilters] = React.useState(null);
-  const { loading, data } = useQuery(
+  const { loading, data, refetch } = useQuery(
     FETCH_BOOKINGS,
     {
       variables: {
@@ -19,6 +23,8 @@ const BookingsListingPage = (props) => {
     },
     { fetchPolicy: "network-only" }
   );
+  const [confirmBooking] = useMutation(CONFIRM_BOOKING);
+  const [deleteBooking] = useMutation(DELETE_BOOKING);
   const handleChangeDateFilters = (values) => {
     const filterValues = values;
     const startDate = filterValues[0].toISOString();
@@ -27,6 +33,28 @@ const BookingsListingPage = (props) => {
       startDate,
       endDate,
     });
+  };
+
+  const handleChangeBookingConfirmation = async (status, id) => {
+    await confirmBooking({
+      variables: {
+        confirmBookingBookingId: id,
+        confirmBookingStatus: status,
+      },
+    });
+    await refetch();
+  };
+
+  const handleDeleteBooking = async (id) => {
+    if (window.confirm("Are you sure to delete this booking?")) {
+      // console.log(id);
+      await deleteBooking({
+        variables: {
+          deleteBookingBookingId: id,
+        },
+      });
+      await refetch();
+    }
   };
   return (
     <Page className="BookingsListingPageWrapper">
@@ -40,7 +68,13 @@ const BookingsListingPage = (props) => {
             {!loading &&
               data &&
               data.bookings.map((bookingInfo) => (
-                <BookingInfoCard {...bookingInfo} />
+                <BookingInfoCard
+                  {...bookingInfo}
+                  handleChangeBookingConfirmation={
+                    handleChangeBookingConfirmation
+                  }
+                  handleDeleteBooking={handleDeleteBooking}
+                />
               ))}
             {}
           </Row>
