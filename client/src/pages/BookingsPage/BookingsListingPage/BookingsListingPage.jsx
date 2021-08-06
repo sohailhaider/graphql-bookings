@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 //import { Test } from './BookingsListingPage.styles';
 import BookingInfoCard from "../../../components/BookingInfoCard";
+import { DatePicker } from 'antd';
 
 const BOOKINGS = [
   {
@@ -18,9 +19,10 @@ const BOOKINGS = [
 const BookingsListingPage = (props) => (
   <Container className="BookingsListingPageWrapper">
     <Row>
-      {/* <Col>
-      </Col> */}
-      <Col>
+      <Col md={3} className="mt-3">
+        <DatePicker.RangePicker />
+      </Col>
+      <Col md={9}>
         <Row>
           {BOOKINGS.map((bookingInfo) => (
             <BookingInfoCard {...bookingInfo} />

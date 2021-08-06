@@ -15,7 +15,7 @@ const BookingInfoCard = (props) => (
 
         <Card.Footer>
           <Row>
-            <Col xs={12} md={8}>
+            <Col xs={12} md={8} className="mt-3">
               <input type="checkbox" id={`confirm-booking-${props._id}`} />{" "}
               <label
                 style={{ cursor: "pointer" }}
@@ -25,7 +25,7 @@ const BookingInfoCard = (props) => (
               </label>
             </Col>
             <Col xs={12} md={4}>
-              <Button>Delete Booking</Button>
+              <Button variant={"danger"}>Delete Booking</Button>
             </Col>
           </Row>
         </Card.Footer>
