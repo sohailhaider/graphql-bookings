@@ -1,4 +1,4 @@
-import Layout from "./pages/Layout/Layout";
+import Layout from "./components/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
