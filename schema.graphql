@@ -1,15 +1,13 @@
 scalar Date
 type Query {
-  hello: String
-  fetchDate: Date
   bookings(filter: BookingsFilter): [Booking]
-  booking(id: Int): Booking
+  booking(id: ID): Booking
 }
 
 type Mutation {
   createBooking(bookingData: CreateBookingInput): Booking
-  confirmBooking(bookingId: Int): BookingResponsePayLoad
-  deleteBooking(bookingId: Int): BookingResponsePayLoad
+  confirmBooking(bookingId: ID): Booking
+  deleteBooking(bookingId: ID): BookingResponsePayLoad
 }
 
 type Booking {
@@ -19,6 +17,7 @@ type Booking {
   contactNumber: String
   date: Date
   comment: String
+  confirmed: Boolean
 }
 
 type BookingResponsePayLoad {
@@ -37,4 +36,5 @@ input CreateBookingInput {
   contactNumber: String
   date: Date
   comment: String
+  confirmed: Boolean
 }

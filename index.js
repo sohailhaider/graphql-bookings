@@ -3,9 +3,9 @@ const { ApolloServer, gql } = require("apollo-server-express");
 const { readFileSync } = require("fs");
 const typeDefs = readFileSync("./schema.graphql").toString("utf-8");
 const resolvers = require("./resolvers");
+require("dotenv").config();
 
 async function startApolloServer() {
-
   const server = new ApolloServer({ typeDefs, resolvers });
   await server.start();
 
@@ -16,4 +16,10 @@ async function startApolloServer() {
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
   return { server, app };
 }
-startApolloServer();
+try {
+  require("./databases/databse-connection");
+  startApolloServer();
+} catch (error) {
+  console.error("Could not start Application due to", error);
+  process.exit(-1);
+}
