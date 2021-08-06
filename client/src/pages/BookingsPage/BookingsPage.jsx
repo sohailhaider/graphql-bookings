@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 //import { Test } from './BookingsPage.styles';
 import { LoginContext } from "../../utilities/contexts/login-context";
 import BookingsListingPage from "./BookingsListingPage";

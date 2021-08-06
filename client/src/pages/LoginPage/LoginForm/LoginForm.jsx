@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 //import { Test } from "./LoginForm.styles";
 import { Form, Formik } from "formik";
 import { Button, Col, Row, Alert } from "react-bootstrap";

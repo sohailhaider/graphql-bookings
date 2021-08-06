@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Container, Row, Col } from "react-bootstrap";
+// import PropTypes from "prop-types";
+import { Row, Col } from "react-bootstrap";
 //import { Test } from './BookingsListingPage.styles';
 import BookingInfoCard from "../../../components/BookingInfoCard";
 import { DatePicker } from 'antd';

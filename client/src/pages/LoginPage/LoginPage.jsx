@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import LoginForm from "./LoginForm/LoginForm";
 import Page from "../../components/Page";
 //import { Test } from "./LoginPage.styles";

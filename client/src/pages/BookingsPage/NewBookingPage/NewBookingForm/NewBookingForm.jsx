@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 //import { Test } from "./NewBookingForm.styles";
 import { Formik, Form, Field } from "formik";
 import InputField from "../../../../components/InputField";

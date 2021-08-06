@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 //import { Test } from './MenusPage.styles';
 import image1 from "../../assets/png/thumb-2.png";
 import MenuCard from "../../components/MenuCard/MenuCard";
