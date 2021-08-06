@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import image1 from "../../assets/png/thumb-2.png";
 import MenuCard from "../../components/MenuCard/MenuCard";
 import { Row } from "react-bootstrap";
+import Page from "../../components/Page";
 
 const MENUS = [
   {
@@ -49,13 +50,13 @@ const MENUS = [
 ];
 
 const MenusPage = (props) => (
-  <Row className="MenusPageWrapper">
-    {
-      MENUS.map(menu => {
-        return <MenuCard {...menu} />
-      })
-    }
-  </Row>
+  <Page className="MenusPageWrapper">
+    <Row>
+      {MENUS.map((menu) => {
+        return <MenuCard {...menu} />;
+      })}
+    </Row>
+  </Page>
 );
 
 MenusPage.propTypes = {

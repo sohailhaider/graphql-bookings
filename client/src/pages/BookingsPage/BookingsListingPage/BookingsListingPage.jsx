@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 //import { Test } from './BookingsListingPage.styles';
 import BookingInfoCard from "../../../components/BookingInfoCard";
 import { DatePicker } from 'antd';
+import Page from "../../../components/Page";
 
 const BOOKINGS = [
   {
@@ -17,7 +18,7 @@ const BOOKINGS = [
 ];
 
 const BookingsListingPage = (props) => (
-  <Container className="BookingsListingPageWrapper">
+  <Page className="BookingsListingPageWrapper">
     <Row>
       <Col md={3} className="mt-3">
         <DatePicker.RangePicker />
@@ -30,7 +31,7 @@ const BookingsListingPage = (props) => (
         </Row>
       </Col>
     </Row>
-  </Container>
+  </Page>
 );
 
 BookingsListingPage.propTypes = {

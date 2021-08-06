@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 //import { Test } from './InputField.styles';
-import { Field } from "formik";
+import { Field, ErrorMessage } from "formik";
 import { Form as BSForm } from "react-bootstrap";
 
 const InputField = ({ name, type, placeholder, label, extraText }) => (
@@ -13,8 +13,8 @@ const InputField = ({ name, type, placeholder, label, extraText }) => (
     }) => (
       <div>
         <BSForm.Group className="mb-3" controlId={`control-${name}`}>
-          <BSForm.Label>{label}</BSForm.Label>
-          <BSForm.Control type={type} placeholder={placeholder} {...field} />
+          <BSForm.Label for={`input-label-${name}`}>{label}</BSForm.Label>
+          <BSForm.Control id={`input-label-${name}`} type={type} placeholder={placeholder} {...field} />
           {extraText && (
             <BSForm.Text className="text-muted">
               We'll never share your email with anyone else.
@@ -23,6 +23,7 @@ const InputField = ({ name, type, placeholder, label, extraText }) => (
           {meta.touched && meta.error && (
             <div className="error">{meta.error}</div>
           )}
+          <ErrorMessage name={name} />
         </BSForm.Group>
       </div>
     )}

@@ -1,9 +1,10 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import LoginForm from "./LoginForm/LoginForm";
+import Page from "../../components/Page";
 //import { Test } from "./LoginPage.styles";
 
-class LoginPage extends PureComponent { 
+class LoginPage extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -13,8 +14,8 @@ class LoginPage extends PureComponent {
   }
 
   componentDidMount = () => {
-    console.log('LoginPage mounted');
-  }
+    console.log("LoginPage mounted");
+  };
 
   static getDerivedStateFromError(error) {
     // getDerivedStateFromError -> Update state so the next render will show the fallback UI.
@@ -26,25 +27,25 @@ class LoginPage extends PureComponent {
   }
 
   getSnapshotBeforeUpdate = (prevProps, prevState) => {
-    console.log('LoginPage getSnapshotBeforeUpdate', prevProps, prevState);
-  }
+    console.log("LoginPage getSnapshotBeforeUpdate", prevProps, prevState);
+  };
 
   componentDidUpdate = () => {
-    console.log('LoginPage did update');
-  }
+    console.log("LoginPage did update");
+  };
 
   componentWillUnmount = () => {
-    console.log('LoginPage will unmount');
-  }
+    console.log("LoginPage will unmount");
+  };
 
-  render () {
+  render() {
     if (this.state.hasError) {
       return <h1>Something went wrong.</h1>;
     }
     return (
-      <div className="LoginPageWrapper">
+      <Page className="LoginPageWrapper">
         <LoginForm />
-      </div>
+      </Page>
     );
   }
 }
