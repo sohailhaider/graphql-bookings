@@ -3,36 +3,52 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 //import { Test } from './BookingsListingPage.styles';
 import BookingInfoCard from "../../../components/BookingInfoCard";
-import { DatePicker } from 'antd';
+import { DatePicker } from "antd";
 import Page from "../../../components/Page";
+import { useQuery } from "@apollo/client";
+import { FETCH_BOOKINGS } from "../../../graphql/queries/bookings";
 
-const BOOKINGS = [
-  {
-    _id: 1,
-    name: "Booking Name",
-    noOfPeople: 2,
-    contactNumber: "+3422343",
-    date: "2021-08-06T19:24:35.446Z",
-    comment: "Some Comments",
-  },
-];
-
-const BookingsListingPage = (props) => (
-  <Page className="BookingsListingPageWrapper">
-    <Row>
-      <Col md={3} className="mt-3">
-        <DatePicker.RangePicker />
-      </Col>
-      <Col md={9}>
-        <Row>
-          {BOOKINGS.map((bookingInfo) => (
-            <BookingInfoCard {...bookingInfo} />
-          ))}
-        </Row>
-      </Col>
-    </Row>
-  </Page>
-);
+const BookingsListingPage = (props) => {
+  const [filters, setFilters] = React.useState(null);
+  const { loading, data } = useQuery(
+    FETCH_BOOKINGS,
+    {
+      variables: {
+        bookingsFilter: filters,
+      },
+    },
+    { fetchPolicy: "network-only" }
+  );
+  const handleChangeDateFilters = (values) => {
+    const filterValues = values;
+    const startDate = filterValues[0].toISOString();
+    const endDate = filterValues[1].toISOString();
+    setFilters({
+      startDate,
+      endDate,
+    });
+  };
+  return (
+    <Page className="BookingsListingPageWrapper">
+      <Row>
+        <Col md={3} className="mt-3">
+          <DatePicker.RangePicker onChange={handleChangeDateFilters} />
+        </Col>
+        <Col md={9}>
+          <Row>
+            {loading && "Fetching Bookings"}
+            {!loading &&
+              data &&
+              data.bookings.map((bookingInfo) => (
+                <BookingInfoCard {...bookingInfo} />
+              ))}
+            {}
+          </Row>
+        </Col>
+      </Row>
+    </Page>
+  );
+};
 
 BookingsListingPage.propTypes = {
   // bla: PropTypes.string,
