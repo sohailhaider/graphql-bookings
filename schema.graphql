@@ -2,4 +2,41 @@ scalar Date
 type Query {
   hello: String
   fetchDate: Date
+  bookings(filter: BookingsFilter): [Booking]
+  booking(id: Int): Booking
+}
+
+type Mutation {
+  createBooking(bookingData: CreateBookingInput): Booking
+  confirmBooking(bookingId: Int): BookingResponsePayLoad
+  deleteBooking(bookingId: Int): BookingResponsePayLoad
+}
+
+type Booking {
+  _id: ID
+  name: String
+  noOfPeople: Int
+  contactNumber: String
+  date: Date
+  time: Int
+  comment: String
+}
+
+type BookingResponsePayLoad {
+  status: Boolean
+  message: String
+}
+
+input BookingsFilter {
+  startDate: Date
+  endDate: Date
+}
+
+input CreateBookingInput {
+  name: String
+  noOfPeople: Int
+  contactNumber: String
+  date: Date
+  time: Int
+  comment: String
 }
