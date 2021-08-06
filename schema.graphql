@@ -18,7 +18,6 @@ type Booking {
   noOfPeople: Int
   contactNumber: String
   date: Date
-  time: Int
   comment: String
 }
 
@@ -37,6 +36,5 @@ input CreateBookingInput {
   noOfPeople: Int
   contactNumber: String
   date: Date
-  time: Int
   comment: String
 }
