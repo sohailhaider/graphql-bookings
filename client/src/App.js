@@ -1,5 +1,6 @@
 import Layout from "./components/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'antd/dist/antd.css';
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import MenusPage from "./pages/MenusPage";
