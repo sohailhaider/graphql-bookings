@@ -4,7 +4,8 @@ import React, { PureComponent } from "react";
 import { Formik, Form, Field } from "formik";
 import InputField from "../../../../components/InputField";
 import { DatePicker } from "antd";
-import { Button } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
+import NewBookingValidationSchema from "./NewBookingValidationSchema";
 
 class NewBookingForm extends PureComponent {
   constructor(props) {
@@ -34,6 +35,7 @@ class NewBookingForm extends PureComponent {
       <div className="NewBookingFormWrapper">
         <Formik
           initialValues={this.state.initialValues}
+          validationSchema={NewBookingValidationSchema}
           onSubmit={(values) => {
             this.props.handleCreateBooking(values);
           }}
@@ -41,7 +43,11 @@ class NewBookingForm extends PureComponent {
           {({ errors, touched }) => (
             <Form>
               <InputField name="name" label="Name" />
-              <InputField name="noOfPeople" label="Number of People" />
+              <InputField
+                name="noOfPeople"
+                label="Number of People"
+                type="number"
+              />
               <InputField name="contactNumber" label="Contact Number" />
               <Field name="date">
                 {({
@@ -54,15 +60,20 @@ class NewBookingForm extends PureComponent {
                     <DatePicker
                       showTime
                       id={`input-date`}
-                      className="form-control input mt-2 mb-3"
+                      className={`form-control input mt-2 ${
+                        meta.touched && meta.error ? "is-invalid" : ""
+                      }`}
                       onChange={(value) =>
                         setFieldValue("date", value.toISOString())
                       }
                     />
+                    {meta.touched && meta.error && (
+                      <Alert variant="danger">{meta.error}</Alert>
+                    )}
                   </div>
                 )}
               </Field>
-              <InputField name="comment" label="Comments" />
+              <InputField name="comment" label="Comments" labelClassName="mt-3" />
               <Button type="submit" className="float-end">
                 Confirm Booking
               </Button>
