@@ -6,7 +6,7 @@ type Query {
 
 type Mutation {
   createBooking(bookingData: CreateBookingInput): Booking
-  confirmBooking(bookingId: ID): Booking
+  confirmBooking(bookingId: ID, status: Boolean): Booking
   deleteBooking(bookingId: ID): BookingResponsePayLoad
 }
 

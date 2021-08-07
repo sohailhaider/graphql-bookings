@@ -8,9 +8,9 @@ const fetchAllBookings = async (parent, { filter }, context) => {
         $gte: filter.startDate,
         $lte: filter.endDate,
       },
-    });
+    }).sort({ date: "descending" });
   }
-  return await BookingModel.find();
+  return await BookingModel.find().sort({ date: "descending" });
 };
 
 const fetchBooking = async (parent, { id }, context) => {

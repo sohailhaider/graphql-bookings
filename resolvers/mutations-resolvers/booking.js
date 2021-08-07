@@ -6,10 +6,10 @@ const createBooking = (parent, { bookingData }, context) => {
   booking.save();
   return booking;
 };
-const confirmBooking = async (parent, { bookingId }, context) => {
+const confirmBooking = async (parent, { bookingId, status }, context) => {
   const booking = await BookingModel.findOneAndUpdate(
     { _id: bookingId },
-    { confirmed: true }
+    { confirmed: status }
   );
   return booking;
 };
