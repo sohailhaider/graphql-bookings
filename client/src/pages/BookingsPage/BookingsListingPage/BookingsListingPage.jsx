@@ -11,6 +11,7 @@ import {
   CONFIRM_BOOKING,
   DELETE_BOOKING,
 } from "../../../graphql/mutations/bookings";
+import _ from "lodash";
 
 const BookingsListingPage = (props) => {
   const [filters, setFilters] = React.useState(null);
@@ -20,8 +21,9 @@ const BookingsListingPage = (props) => {
       variables: {
         bookingsFilter: filters,
       },
+      fetchPolicy: "network-only"
     },
-    { fetchPolicy: "network-only" }
+    // { fetchPolicy: "no-cache" }
   );
   const [confirmBooking] = useMutation(CONFIRM_BOOKING);
   const [deleteBooking] = useMutation(DELETE_BOOKING);
@@ -76,7 +78,7 @@ const BookingsListingPage = (props) => {
                   handleDeleteBooking={handleDeleteBooking}
                 />
               ))}
-            {}
+            {!loading &&  data && _.isEmpty(data.bookings) && <h2 className="text-center mt-5 text-warning">No Bookings found!</h2>}
           </Row>
         </Col>
       </Row>

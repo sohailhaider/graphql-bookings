@@ -7,6 +7,7 @@ import NewBookingForm from "./NewBookingForm";
 import { useMutation } from "@apollo/client";
 import { CREATE_BOOKING } from "../../../graphql/mutations/bookings";
 import _ from "lodash";
+import { redirectToDashboard } from "../../../utilities/navigation-helper";
 
 const NewBookingPage = (props) => {
   const [createBooking] = useMutation(CREATE_BOOKING);
@@ -24,6 +25,7 @@ const NewBookingPage = (props) => {
         },
       });
       alert("Your booking created successfully");
+      redirectToDashboard();
     } catch (e) {
       alert(e.message);
     }
