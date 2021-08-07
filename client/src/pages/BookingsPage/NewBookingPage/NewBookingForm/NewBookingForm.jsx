@@ -35,8 +35,7 @@ class NewBookingForm extends PureComponent {
         <Formik
           initialValues={this.state.initialValues}
           onSubmit={(values) => {
-            // same shape as initial values
-            console.log(values);
+            this.props.handleCreateBooking(values);
           }}
         >
           {({ errors, touched }) => (
@@ -63,7 +62,7 @@ class NewBookingForm extends PureComponent {
                   </div>
                 )}
               </Field>
-              <InputField name="comments" label="Comments" />
+              <InputField name="comment" label="Comments" />
               <Button type="submit" className="float-end">
                 Confirm Booking
               </Button>

@@ -12,7 +12,7 @@ const InputField = ({ name, type, placeholder, label, extraText }) => (
       meta,
     }) => (
       <div>
-        <BSForm.Group className="mb-3" controlId={`control-${name}`}>
+        <BSForm.Group className="mb-3">
           <BSForm.Label for={`input-label-${name}`}>{label}</BSForm.Label>
           <BSForm.Control id={`input-label-${name}`} type={type} placeholder={placeholder} {...field} />
           {extraText && (

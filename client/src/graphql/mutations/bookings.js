@@ -27,3 +27,19 @@ export const DELETE_BOOKING = gql`
     }
   }
 `;
+
+export const CREATE_BOOKING = gql`
+  mutation CreateBookingMutation(
+    $createBookingBookingData: CreateBookingInput
+  ) {
+    createBooking(bookingData: $createBookingBookingData) {
+      _id
+      name
+      noOfPeople
+      contactNumber
+      date
+      comment
+      confirmed
+    }
+  }
+`;
